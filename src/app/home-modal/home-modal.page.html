@@ -1,0 +1,20 @@
+<ion-content>
+    <!-- <app-header-shop></app-header-shop> -->
+  
+    <ion-row class="ion-justify-content-center submenu pb-50">
+      <ion-col sizeLg="6">
+          <ion-text class="ion-text-center" color="light">
+            <h2>¡AVISO!</h2>
+          </ion-text>
+      </ion-col>
+    </ion-row>
+  
+    <ion-grid class="bg-grid">
+  
+      <ion-card-subtitle class="ion-text-center"> {{ popUp.title }} </ion-card-subtitle>
+      <img [src]="popUp.image" />
+      <ion-button size="small" color="dark" shape="round" expand="full" (click)="noShowPopUp()"><ion-text color="light">Aceptar</ion-text> </ion-button>
+    </ion-grid>
+  
+  </ion-content>
+  

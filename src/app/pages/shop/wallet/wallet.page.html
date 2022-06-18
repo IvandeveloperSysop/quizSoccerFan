@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <h4 class="ion-text-center">Saldo en monedero:</h4>
+        <h1 class="ion-text-center"> {{ balance | number }} <ion-icon name="radio-button-on-outline" style="margin-right: 5px;"></ion-icon></h1>
+      </ion-col>
+    </ion-row>
+    <ion-col sizeLg="6">
+      <h4 class="ion-text-center">Historial</h4>
+      <ion-list class="transacction-list">
+        <ion-item *ngFor="let t of transactions">
+          <ion-label class="ion-text-wrap">{{ t.date }} | {{ t.title }} </ion-label>
+          <ng-container *ngIf="t.type_id == 7">
+            <ion-text class="points-icon" slot="end" color="success">{{ t.amount | number }} <ion-icon name="radio-button-on-outline"></ion-icon></ion-text>
+          </ng-container>
+          <ng-container *ngIf="t.type_id == 8">
+            <ion-text class="points-icon" slot="end" color="danger">-{{ t.amount | number }} <ion-icon name="radio-button-on-outline"></ion-icon></ion-text>
+          </ng-container>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-grid>
+</ion-content>

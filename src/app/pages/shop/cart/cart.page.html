@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="customer/shop"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-grid class="formGrid">
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeLg="6">
+        <img [src]="image">
+        <!-- <img src="assets/awards/play5.jpg" /> -->
+        <div class="ion-padding">
+          <div class="desc">
+            <h4>
+              {{ product['name'] }}
+            </h4>
+            <h6>
+              {{ product['description'] }}
+            </h6>
+            <h4>
+              Stock: {{ product['stock'] }}
+            </h4>
+            <h4>
+              Costo: <ion-chip color="warning"> <ion-label color="dark">{{ product['price'] | number }}</ion-label> <ion-icon  name="radio-button-on-outline"></ion-icon> </ion-chip>
+            </h4>
+
+            <h4 class="ion-text-end">Saldo: <ion-chip color="tertiary"> <ion-label >{{ wallet['balance'] | number }}</ion-label> </ion-chip> </h4>
+          </div>
+        </div>
+
+        <div *ngIf="!validExistOrder; else existOrder">
+
+          <div *ngIf="wallet['balance'] >= product['price'];else pointsNotReached" >
+  
+            <ion-card class="" color="light">
+              <ion-card-content>
+                <ion-list>
+                  <form #formulario="ngForm" id="formulario" >
+                    <!-- MD -->
+                    <ion-item lines="none">
+                      <h2>Datos de entrega:</h2>
+                    </ion-item>
+                    <ion-item id="">
+                      <ion-label position="floating">Calle y numero *</ion-label>
+                      <ion-input  type="text"
+                                  name="street"
+                                  id="street"
+                                  [(ngModel)]="address.street"
+                                  required></ion-input>
+                    </ion-item>
+                    <ion-item id="">
+                      <ion-label position="floating">Colonia *</ion-label>
+                      <ion-input  type="text"
+                                  name="suburb"
+                                  id="suburb"
+                                  [(ngModel)]="address.suburb"
+                                  required></ion-input>
+                    </ion-item>
+                    <ion-item id="">
+                      <ion-label position="floating">Ciudad o municipio *</ion-label>
+                      <ion-input  type="text"
+                                  name="city"
+                                  id="city"
+                                  [(ngModel)]="address.city"
+                                  required></ion-input>
+                    </ion-item>
+                    <ion-item id="">
+                      <ion-label position="floating">Estado *</ion-label>
+                      <ion-input  type="text"
+                                name="state"
+                                id="state"
+                                [(ngModel)]="address.state"
+                                required></ion-input>
+                    </ion-item>
+                    <ion-item id="">
+                      <ion-label position="floating">CP *</ion-label>
+                      <ion-input  type="text"
+                                  name="zip"
+                                  id="zip"
+                                  [(ngModel)]="address.zip"
+                                  required></ion-input>
+                    </ion-item>
+                  </form>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+    
+            <ion-button color="danger" mode="ios" expand="block" shape="round" (click)="onSubmit(wallet,product)">
+              <ion-icon slot="start" name="basket-outline"></ion-icon>
+              Comprar
+            </ion-button>
+  
+          </div>
+  
+          <ng-template #pointsNotReached>
+            <ion-card class="" color="light" class="ion-text-center">
+              <ion-card-content>
+                <ion-icon name="alert-circle-outline" style="font-size: 2.5rem;color: #FFC40A;"></ion-icon>
+                <br>
+                <ion-card-title>Puntos insuficientes</ion-card-title>
+                <p style="margin-top: 10px;">Registra tickets para poder obtener produtos</p>
+                <ion-chip class="chipLogout" routerLink="/customer/upload">
+                  <ion-label style="width: 100%;text-align: start;display: flex;"> <p>Registrar ticket</p> <ion-icon name="cloud-upload-outline" style="margin-left: 5px;"></ion-icon></ion-label>
+                </ion-chip>
+              </ion-card-content>
+            </ion-card>
+          </ng-template>
+        </div>
+
+        <ng-template #existOrder>
+          <ion-card class="" color="light" class="ion-text-center">
+            <ion-card-content>
+              <ion-icon name="alert-circle-outline" style="font-size: 2.5rem;color: #FFC40A;"></ion-icon>
+              <br>
+              <ion-card-title>Producto redimido</ion-card-title>
+              <p style="margin-top: 10px;">Sigue participando</p>
+              <ion-chip class="chipLogout" routerLink="/customer/upload">
+                <ion-label style="width: 100%;text-align: start;display: flex;"> <p>Registrar ticket</p> <ion-icon name="cloud-upload-outline" style="margin-left: 5px;"></ion-icon></ion-label>
+              </ion-chip>
+            </ion-card-content>
+          </ion-card>
+        </ng-template>
+        
+      </ion-col>
+    </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,97 @@
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts" #introSlider>
+    <ion-slide>
+      <ion-row class="ion-align-items-center ion-justify-content-center main-bg">
+        <ion-col size-xs="8" size-md="6" size-lg="5" size-xl="3">
+          <img src="./../../../assets/slider/logos.png" />
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center header-round" >
+        <ion-col class="ion-no-padding" size-xs="12" size-md="6" size-lg="5" size-xl="3">
+          <img src="./../../../assets/slider/menu-bg.png" />
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center ion-justify-content-center" >
+        <ion-col sizeXs="12" sizeMd="6" size-lg="5" size-xl="3">
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
+              <img src="./../../../assets/slider/awards.png" />
+            </ion-col>
+          </ion-row>
+          <h2>Gana con Ciel Mineralizada</h2>
+          <p>Compra productos participantes y genera <b>1 punto por cada peso invertido</b></p>
+          <p>Canjea tus puntos acumulados en la Tienda Virtual por grandes premios</p>
+          <!-- <ion-button class="buttonAward" fill="none" (click)="swipeNext()">Conoce los premios <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button> -->
+          <br>
+          <ion-button color="dark" fill="clear" routerLink="/login" >Continuar </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-slide>
+
+    <!-- <ion-slide>
+      <ion-row class="ion-align-items-center">
+        <ion-col size-xs="12" size-md="6">
+          <img src="./../../../assets/awards/xelha2.png" />
+        </ion-col>
+        <ion-col sizeXs="12" sizeMd="6" >
+          <h2>5 Viajes Dobles a Xel-Há ¡Todo incluido! <br><small>por 3 días y 2 noches</small></h2>
+          <p>
+            <b>Las 5 personas con mas compras</b> durante la vigencia de la promoción serán los ganadores
+            (Incluye Traslados, Avión, Hotel, Alimentos, Entradas al Parque)
+          </p>
+          <ion-button class="buttonAward"  fill="none" (click)="swipeNext()">Siguiente  <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-row class="ion-align-items-center">
+        <ion-col size-xs="12" size-md="6">
+          <img src="./../../../assets/awards/hielera blanca.png" />
+        </ion-col>
+        <ion-col size-xs="12" size-md="6">
+          <h2>20 Hieleras Coleman 52 qt</h2>
+          <p>
+            Canjéalas en la tienda virtual con <b>7,500 puntos</b> y te la mandaremos a tu domicilio
+          </p>
+          <ion-button class="buttonAward"  fill="none" (click)="swipeNext()">Siguiente <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-row class="ion-align-items-center">
+        <ion-col size-xs="12" size-md="6">
+          <img src="./../../../assets/awards/amazon_card blanca.png" />
+        </ion-col>
+        <ion-col size-xs="12" size-md="6">
+          <h2>600 Tarjetas Amazon de $100 pesos</h2>
+          <p>
+            Canjéalas en la tienda virtual por <b>300 puntos</b> y recibirás tu código virtual por correo
+          </p>
+          <ion-button class="buttonAward" fill="none" (click)="swipeNext()">Siguiente <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-row class="ion-align-items-center">
+        <ion-col size-xs="12" size-md="6">
+          <div *ngIf="!videoPath">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </div>
+          <div *ngIf="videoPath">
+            <iframe [src]="videoPath" width="100%" class="videoSlide" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen></iframe>
+          </div>
+        </ion-col>
+        <ion-col size-xs="12" size-md="6">
+          <h2>¿Listo para ganar?</h2>
+          <p>Vigencia de la Promoción: <b>26 de mayo al 22 de junio</b>, o hasta agotar existencias.</p>
+          <ion-button class="buttonAward"  fill="none" routerLink="/login">Entrar <ion-icon slot="start" name="log-in-outline"></ion-icon></ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-slide> -->
+
+  </ion-slides>
+</ion-content>

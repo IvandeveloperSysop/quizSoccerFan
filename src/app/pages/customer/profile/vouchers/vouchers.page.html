@@ -1,0 +1,75 @@
+
+<ion-header>
+  <ion-row class="">
+    <ion-col size-xs="5" size-md="5" class="ion-align-self-center">
+      <ion-toolbar color="secondary" >
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="home"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Vouchers</ion-title>
+      </ion-toolbar>
+    </ion-col>
+    <ion-col size="7">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-xs="4" size-md="3" class="ion-align-self-center">
+          <img src="assets/logos/main.png" alt="Programa de recompensas" class="imageHeader">
+        </ion-col>
+        <ion-col size-xs="4" size-md="3" class="ion-align-self-center">
+          <img src="assets/logos/main2.png" alt="Programa de recompensas" class="imageHeader">
+        </ion-col>
+        <ion-col size-xs="4" size-md="3" class="ion-align-self-center">
+          <img src="assets/logos/main3.png" alt="Programa de recompensas" class="imageHeader">
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeMd="10" sizeSm="12" >
+  
+        <ion-list>
+          <ion-row class="ion-margin-bottom" >
+            <!-- *ngIf=" showTickets; else nonInfo" -->
+            <ion-col size-xs="11" size-sm="6" size-md="4" *ngFor="let voucher of vouchers"  >
+              <!-- *ngFor="let ticket of tickets" -->
+
+              <div class="courses-container">
+                <div class="course">
+                  <div class="course-preview">
+                    <h2>Ticket</h2>
+                    <h6 color="warning">Nº {{ voucher.voucher_no }}</h6>
+
+                    <!-- <a href="#">View all chapters <i class="fas fa-chevron-right"></i></a> -->
+                  </div>
+                  <div class="course-info">
+                    <!-- <h6>Chapter 4</h6> -->
+                    <h6>{{ voucher.date | date: 'dd/MM/yyyy' }}</h6>
+                    <h2>{{ voucher.name }}</h2>
+                  </div>
+                </div>
+              </div>
+              
+            </ion-col>
+          </ion-row>
+          <ng-template #nonInfo>
+            <ion-text class="ion-text-center">
+              <h2>No cuentas con ningún ticket cargado</h2>
+            </ion-text>
+          </ng-template>
+        </ion-list>
+  
+        <ion-infinite-scroll *ngIf="count > 9" threshold="100px" (ionInfinite)="loadData($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

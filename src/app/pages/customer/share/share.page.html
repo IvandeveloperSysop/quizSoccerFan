@@ -1,0 +1,279 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title >Puntos Extra</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeLg="6">
+
+        <ion-text class="ion-text-center">
+          <h2 class="title-share">¡GANA PUNTOS EXTRAS!</h2>
+        </ion-text>
+
+        <ion-segment scrollable (ionChange)="segmentChanged($event)" [(ngModel)]="redSocial">
+          <ion-segment-button value="whatsapp">
+            <ion-label>Invitar amigos</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="facebook">
+            <ion-label>Compartir en FB</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+
+        <div *ngIf="redSocial == 'whatsapp';else socialFacebook">
+          <ion-card color="light">
+            <ion-card-content>
+              <img src="assets/share/1.png" >
+              <p style="text-align: justify;">
+                Gana 50 puntos extras compartiendo una invitación de registro a tus contactos de Whatsapp o cualquier otra red social, una vez que esa persona registre su ticket primer ticket de al menos $20 pesos. ¡No hay límite de personas que puedas referir! 
+              </p>
+              <small style="display:block;text-align: center;"><br> (Disponible una sola vez por cada contacto)</small>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-button expand="block" (click)="shareAppWhatsapp()"  color="secondary">
+            <ion-icon name="share-social-outline"></ion-icon>Invitar amigos
+          </ion-button>
+        </div>
+
+
+
+        <ng-template #socialFacebook>
+          <div class="">
+            <ion-card color="light">
+              <ion-card-content>
+                <img src="assets/share/2.png" >
+                <p style="text-align: justify;">
+                  Gana 20 puntos extras compartiendo la App en modo público en tu muro de Facebook, después mándanos la URL y una captura de la publicación para validarla. ¡Esto lo puedes hacer una vez al mes! .
+                </p>
+                <small style="display:block;text-align: center;"><br> (Disponible una vez al mes)</small>
+              </ion-card-content>
+            </ion-card>
+            
+            <ion-button expand="block" (click)="shareAppWeb()" color="secondary">
+              <ion-icon name="share-social-outline"></ion-icon>Compartir en Facebook
+            </ion-button>
+            
+        
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v9.0&appId=428169461927284&autoLogAppEvents=1" nonce="Diu2oUm5"></script>
+        
+            <!-- <div class="fb-share-button" data-href="http://localhost:8100/refer/44546546" data-layout="button" data-size="large" style="display: none"> -->
+            <div class="fb-share-button" data-href="http://destrezate.mx/" data-layout="button" data-size="large" style="display: none">
+              <a target="_blank" id="shareFacebook" href="{{linkShareFB}}"  class="fb-xfbml-parse-ignore">Compartir</a>
+            </div>
+        
+            <ion-list  id="presentSm" *ngIf="!validExist;else exists" style="margin-top: 5px;">
+        
+              <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)" enctype="multipart/form-data">
+          
+                <!-- SM -->
+                <ion-item >
+                  <!-- Input with value -->
+                  <ion-label position="floating" color="dark">Url de la publicación</ion-label>
+                  <ion-input  type="text"
+                              color="dark"
+                              name="url"
+                              [(ngModel)]="url"
+                              (change)="validShareSubmit()"></ion-input>
+                </ion-item>
+        
+            
+                <ion-item >
+                  <ion-grid style="height: 200px; ">
+                    <ion-row>
+                      <ion-col size="3" id="insertPicture">
+                        <ion-label style="margin-top: 2vh !important;">
+                          <div class="image-upload">
+                            <label for="image-input-share" >
+                              <ion-icon name="camera-outline" style="font-size: 4rem;" color="dark"></ion-icon>
+                            </label>
+                            <input  type="file" 
+                                    id="image-input-share" 
+                                    accept="image/*" 
+                                    name="img"
+                                    (change)="changeImage($event)"
+                                    required/> 
+                          </div>
+                        </ion-label>
+                        <p class="home-text">INSERTAR CAPTURA</p>
+                      </ion-col>
+          
+                      <ion-col *ngIf="imgSourceShare" class="imageShareUpload" size="9"  >
+                        <div class="image-upload" >
+                            <ion-img  [src]="imgSourceShare"></ion-img>
+                        </div>
+                      </ion-col>
+          
+                    </ion-row>
+                  </ion-grid>
+            
+                  <!-- Input with value -->
+                </ion-item>
+                
+                <ion-button type="submit"
+                            color="secondary" 
+                            expand="block"
+                            shape="round"
+                            [disabled]="!buttonValid"
+                            style="margin: 15px;">
+                  Subir
+                </ion-button>
+                
+              </form>
+          
+            </ion-list>
+        
+          </div>
+        
+          <ng-template #exists>
+            <div class="ion-padding" style="margin-top: 5px;">
+        
+              <form #formulario="ngForm" *ngIf="appShare.statusId == 7" (ngSubmit)="updateShare(formulario)" enctype="multipart/form-data">
+          
+                <!-- SM -->
+                <ion-item  style="margin: 5px;">
+                  <!-- Input with value -->
+                  <ion-label position="floating">Url de la publicación </ion-label>
+                  <ion-input  type="text"
+                              name="url"
+                              [(ngModel)]="url"
+                              (change)="validShareSubmit()"></ion-input>
+                </ion-item>
+        
+            
+                <ion-item >
+                  <ion-grid style="height: 200px; ">
+                    <ion-row>
+                      <ion-col size="3">
+                        <ion-label style="margin-top: 2vh !important;">
+                          <div class="image-upload">
+                            <label for="image-input-share" >
+                              <ion-icon name="camera-outline" style="font-size: 4rem;"></ion-icon>
+                            </label>
+                            <input  type="file"
+                                    id="image-input-share" 
+                                    accept="image/*" 
+                                    name="img"
+                                    (change)="changeImage($event)"
+                                    required/> 
+                          </div>
+                        </ion-label>
+                      </ion-col>
+          
+                      <ion-col *ngIf="imgSourceShare" size="9" class="imageShareUpload" >
+                        <div class="image-upload" >
+                            <ion-img  [src]="imgSourceShare"></ion-img>
+                        </div>
+                      </ion-col>
+          
+                    </ion-row>
+                  </ion-grid>
+            
+                  <!-- Input with value -->
+                </ion-item>
+                
+                <ion-button type="submit" 
+                            expand="block"
+                            shape="round"
+                            [disabled]="!buttonValid"
+                            style="margin: 15px;">
+                  Subir
+                </ion-button>
+                
+              </form>
+        
+              <ion-row class="ion-justify-content-center">
+                <ion-col size="12" >
+            
+                  <ion-list>
+                    <ion-row class="ion-margin-bottom">
+                      <ion-col size-xs="12" size-sm="6" size="6" >
+                        <!-- *ngFor="let appShare of appShares"  -->
+                        <ion-card style="overflow: scroll; overflow-x: hidden;" color="light">
+                          <ion-card-header>
+                            <ng-container *ngIf="appShare.image;else secondImage">
+                              <ion-img [src]="appShare.image" class="imageShareUpload"></ion-img>
+                            </ng-container>
+                            <ng-template #secondImage>
+                              <ng-container>
+                                <ion-img  src="./assets/images/image-not.png"  style="height: 300px;"></ion-img>
+                              </ng-container>
+                            </ng-template>
+                            <h2>{{ appShare.id }}</h2>
+                          </ion-card-header>
+                        
+                          <ion-card-content>
+                            <!-- <p>{{ appShare.statusId }}</p> -->
+                            <p>{{ appShare.url }}</p>
+                            <ng-container *ngIf="appShare.statusId === 8;else second">
+                              <ion-badge color="success">{{ appShare.status }}</ion-badge>
+                            </ng-container>
+                            <ng-template #second>
+                                <ng-container *ngIf="appShare.statusId === 9;else third">
+                                  <ion-badge color="warning">En revision</ion-badge>
+                                </ng-container>
+                            </ng-template>
+                            <ng-template #third>
+                              <ng-container>
+                                <ion-badge color="danger">{{ appShare.status }}</ion-badge>
+                              </ng-container>
+                            </ng-template>
+                            <div *ngIf="appShare.comment">
+        
+                              <ion-card color="danger" *ngIf="appShare.statusId == 7;else cardComent">
+                                <ion-card-content >
+                                  {{ appShare.comment }}.
+                                </ion-card-content>
+                              </ion-card>
+        
+                              <ng-template #cardComent>
+                                <ion-card color="light">
+                                  <ion-card-content >
+                                    {{ appShare.comment }}.
+                                  </ion-card-content>
+                                </ion-card>
+                              </ng-template>
+        
+                            </div>
+                          </ion-card-content>
+                        </ion-card>
+            
+                        
+            
+                      </ion-col>
+                    </ion-row>
+                  </ion-list>
+            
+                </ion-col>
+              </ion-row>
+        
+            </div>
+          </ng-template>
+          
+        </ng-template>
+
+        <!-- <div class="accordion-container" (click)="toggleAccordion()" [ngClass]="isListItemOpened ? 'open' : ''">
+          <h1>
+            Compartidos en facebook
+            <div class="arrow"></div>
+          </h1>
+          
+          <div class="content">
+            <p>
+              Hola
+            </p>
+          </div>
+        </div>
+         -->
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,98 @@
+// .card-login {
+//     --background: linear-gradient(#0096d700,#0096d700),url("./../../../assets/bg/login-bg-sm.png") repeat center center;
+//     // --background: #ebcb3f;
+// }
+// ion-content {
+//   --background: linear-gradient(#ffc244, #ffc244);
+// }
+
+.main-bg {
+  background: #b1d1ee;
+}
+ion-content{
+  --background: #fff;
+}
+ion-input, ion-label {
+  font-weight: bold;
+}
+
+ion-button {
+  --background: var(--ion-color-dark);
+  color: #fff;
+}
+.loginLogo {
+  display: none;
+
+  img {
+    margin: 0 auto;
+    width: 85%;
+    float: left;
+  }
+  --ion-grid-column-padding: 0;
+}
+
+
+@media (min-width:767px){
+  .login-image{
+    display: none;
+  }
+
+  .imageForm{
+    width: 80%;
+  }
+
+  #responsiveLogo{
+    display: none;
+  }
+
+  .imageFormPatrocinios{
+    // position: absolute;
+    left: auto;
+    right: 0px;
+    width: 50%;
+  }
+}
+
+@media (min-height: 900px){
+  .login-image, .login-form{
+    max-height: 900px !important;
+  }
+}
+
+@media (max-width:767px){
+  .card-login {
+    margin: 0;
+  }
+  .imageForm{
+    display: none;
+  }
+
+  .imageFormPatrocinios{
+    display: none;
+  }
+
+  .loginLogoResponsive {
+    img{
+      display: block;
+      margin: 0 auto;
+      width: 75%;
+    }
+  }
+
+  #rowForm{
+    margin-top: 3vh;
+    // height: 100vh
+  }
+
+  .imagePage{
+    // height: 28vh;
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+  }
+
+  #mainLogo{
+    width: 100%;
+  }
+
+}

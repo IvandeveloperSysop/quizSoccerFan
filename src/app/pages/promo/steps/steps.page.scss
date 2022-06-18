@@ -1,0 +1,81 @@
+body {
+    cursor: url('http://ionicframework.com/img/finger.png'), auto;
+  }
+  
+  
+  ion-content {
+    /*--background: url("./../../../../../assets/images/botellasLGR.png") no-repeat center center / cover;*/
+    --background: var(--ion-color-light);
+    --color: var(--ion-color-dark);
+  }
+  
+  ion-label{
+    color: var(--ion-color-dark);
+  }
+  
+  .header .col {
+    background-color:lightgrey;
+  }
+  
+  .col {
+    border: solid 1px grey;
+    border-bottom-style: none;
+    border-right-style: none;
+  }
+  
+  .col:last-child {
+    border-right: solid 1px grey;
+  }
+  
+  .row:last-child .col {
+    border-bottom: solid 1px grey;
+  }
+  
+  img{
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .table-responsive {
+    display: block;
+    max-width: 680px;
+    margin: 8px auto 24px;
+    overflow-x: scroll;
+  
+    table {
+      border: collapse;
+      width: 100%;
+    }
+    table, td, th {
+      border: solid 1px #333;
+      white-space: nowrap;
+      color: #333;
+    }
+    th {
+      font-family: "tccc-unitycondensedbold";
+    }
+    td {
+      font-family: var(--ion-font-family);
+      padding: 3px;
+    }
+  }
+  
+  table {
+    color: var(--ion-color-light);
+  }
+  
+  iframe{
+    height: 500px;
+  }
+  
+  
+  @media(max-width: 750px){
+  
+    iframe{
+      height: 300px;
+    }
+  
+    ion-content {
+      /*--background: linear-gradient(#07080a4f,#0096d770),url("./../../../../../assets/images/botellasR.png") no-repeat center center / cover;*/
+    }
+  }

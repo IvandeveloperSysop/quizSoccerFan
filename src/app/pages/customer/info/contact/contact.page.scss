@@ -1,0 +1,52 @@
+a{
+  color: var(--ion-color-secondary);
+}
+
+h4{
+  color: var(--ion-color-dark);
+}
+ion-text {
+  ul {
+    padding-left: 24px;
+  }
+  h5 {
+    font-size: 14px !important;
+    margin-top: 32px;
+  }
+  p {
+    font-size: 14px !important;
+  }
+  li {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width: 750px) {
+  ion-text{
+    text-align: justify;
+    h5 {
+      font-size: 20px !important;
+    }
+    p {
+      font-size: 18px !important;
+    }
+    li {
+      font-size: 18px !important;
+    }
+    td {
+      font-size: 18px !important;
+    }
+  }
+}
+
+ion-content {
+    //--background: url("./../../../../../assets/images/botellasBackPC.png") no-repeat bottom right ;
+    --background: var(--ion-color-light);
+}
+
+@media(max-width: 750px){
+
+    ion-content {
+      //--background: url("./../../../../../assets/images/botellasBack.png") no-repeat center center / cover;
+    }
+  }

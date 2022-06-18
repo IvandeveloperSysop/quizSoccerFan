@@ -1,0 +1,48 @@
+<ion-content>
+  <app-header-shop></app-header-shop>
+
+  <ion-row class="ion-align-items-centersubmenu pb-50">
+    <ion-col sizeLg="6">
+        <ion-text class="ion-text-center" color="dark">
+          <h2>Tienda</h2>
+        </ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid class="bg-grid">
+    <ion-row class="ion-align-items-center" class="mt-50" *ngIf=" showProducts; else nonInfo">
+      <ion-col size-xs="12" size-lg="4" *ngFor="let product of products">
+
+        <ion-card color="light">
+          <img [src]="routeGlobal+product.image" />
+          <ion-card-header>
+            <ion-card-subtitle>Costo: {{ product.price | number }} <ion-icon name="radio-button-on-outline" ></ion-icon></ion-card-subtitle>
+            <ion-card-title>{{ product.name }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Stock: {{ product.stock }}
+            <ion-row class="ion-justify-content-end">
+              <ion-col size="6">
+                <!-- Expand -->
+                <ion-button size="small" color="primary" shape="round" expand="full" routerLink="/cart/{{ product.id }}"><ion-text color="light">Comprar</ion-text> </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+        <ion-text class="ion-text-center ion-padding">
+          <small>*Se limita el canje de “Hieleras” a solo una por cada participante, en el caso de las “Tarjetas Virtuales Amazon” pueden ser ilimitadas.</small>
+          <br>
+          <small>Durante toda la vigencia de la promoción, todos los lunes se reabastecerá el inventario de incentivos, ¡sigue participando!</small>
+        </ion-text>
+    </ion-row>
+
+    <ng-template #nonInfo>
+      <ion-text class="ion-text-center" color="dark">
+        <h2>No se han cargado productos en la tienda</h2>
+      </ion-text>
+    </ng-template>
+  </ion-grid>
+
+</ion-content>

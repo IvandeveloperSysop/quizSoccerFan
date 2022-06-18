@@ -1,0 +1,17 @@
+ion-icon {
+  font-size: 18px;
+}
+
+ion-content{
+  --background: #FFF !important;
+  --color: var(--ion-color-dark);
+}
+
+
+ion-item {
+  font-size: 14px;
+  --min-height: 38px;
+}
+ion-badge, ion-label, ion-icon {
+  margin: 5px;
+}

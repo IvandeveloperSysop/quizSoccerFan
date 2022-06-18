@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start" (click)="dismiss()">
+      Close
+    </ion-buttons>
+    <ion-title>Aviso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card color="light">
+    <ion-card-content >
+      <ion-text class="ion-text-center">
+        <h1>{{ title }}</h1>
+        <h3>Fecha: {{date}}</h3>
+      </ion-text>
+        <p style="text-align: justify;margin-top: 10px;">{{comment}}</p>
+      <!-- <small style="display:block;text-align: center;"><br> Disponible una sola vez en cada corte</small>  -->
+    </ion-card-content>
+  </ion-card>
+</ion-content>

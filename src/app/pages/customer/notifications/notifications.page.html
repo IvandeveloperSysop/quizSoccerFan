@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start" >
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Avisos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf=" !shadow; else content">
+    <ion-item *ngFor="let item of ['1','2','3','4','5','6','7','8','9']">
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+  <ion-list>
+    
+    <!-- Multi-line sliding item with icon options on both sides -->
+    <ng-template #content>
+      <h2 style="text-align: center;"*ngIf=" !nonNotices; else notices"> POR EL MOMENTO NO HAY AVISOS</h2>
+    </ng-template>
+    <ng-template #notices>
+      <ion-item-sliding id="item100" *ngFor="let aviso of avisos" >
+        <div *ngIf="!aviso['user_id']">
+          <ion-item (click)="presentModal(aviso)" >
+            <ion-label>
+              <h2>{{aviso['title']}}</h2>
+              <p>{{aviso['comment']}}</p>
+            </ion-label>
+            <ion-note slot="end">
+              {{aviso['date']}}
+            </ion-note>
+          </ion-item>
+      
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="deleteItem(aviso['idAviso'])">
+              <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </div>
+      
+      </ion-item-sliding>
+    </ng-template>
+  
+  </ion-list>
+
+</ion-content>

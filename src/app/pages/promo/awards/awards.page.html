@@ -1,0 +1,50 @@
+<ion-content>
+  <app-header-shop></app-header-shop>
+
+  <ion-row class="ion-justify-content-center submenu pb-50">
+    <ion-col sizeLg="6">
+        <ion-text class="ion-text-center" color="light">
+          <h2 id="awardsText">PREMIOS</h2>
+        </ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid class="grid-bg">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" sizeLg="6" *ngFor="let award of awards">
+
+        <!-- <ion-card color="light" *ngFor="let award of awards" style="margin-top: 4vh;">
+          <div *ngIf="!routeGlobal">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </div>
+
+          <div *ngIf="routeGlobal">
+            <ion-card-header>
+              <ion-card-subtitle style="font-size: 1.3rem;" > {{ award.position }}º </ion-card-subtitle>
+              <ion-card-title class="ion-text-center">{{award.awardName}}</ion-card-title>
+            </ion-card-header>
+            <div style="display: flex; align-items: center;justify-content: center;margin: 20px;">
+              <img style="width: 80%;" [src]="routeGlobal+award.image" />
+            </div>
+          </div>
+        </ion-card> -->
+
+        <ion-card class="ion-padding" >
+          <ion-card-content>
+            <ion-card-title class="ion-text-center">{{award.awardName}}</ion-card-title>
+            <ion-card-subtitle class="ion-text-center">Posicion {{ award.position }}º </ion-card-subtitle>
+            <div class="cover" >
+              <img [src]="routeGlobal+award.image">
+            </div>
+            <ion-row>
+              <ion-col size="8">
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

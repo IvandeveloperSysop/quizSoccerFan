@@ -1,0 +1,354 @@
+<ion-content>
+  <app-header-shop></app-header-shop>
+  <ion-grid class="home-menu" >
+    <div class="circle-section"></div>  
+  </ion-grid>
+
+  <ion-grid class="grid-bg">
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeMd="9" sizeSm="12" >
+
+        <ion-list>
+          <form autocomplete="off" #formulario="ngForm" (ngSubmit)="register(formulario)"  >
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="4" class="ion-text-center">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col size="7" class="ion-text-center">
+
+                    <div class="image-upload" *ngIf="showImageSocial" >
+                      <ion-avatar style="width: 105px;height: 105px;" *ngIf="imgSourceProfileRegister;else imageNon">
+                          <ion-img  [src]="imgSourceProfileRegister" src=""></ion-img>
+                      </ion-avatar>
+                      <ng-template #imageNon>
+                          <ion-avatar style="width: 105px;height: 105px;" >
+                            <img src="assets/images/profile-icon.png" alt="">
+                        </ion-avatar>
+                      </ng-template>
+                    </div>
+
+                  </ion-col>
+                  <ion-col size="3" class="ion-text-center" style="padding-top: 87px;" *ngIf="showImageSocial">
+                    <ion-label>
+                      <div class="image-upload">
+                        <label for="image-input-profile">
+                          <ion-icon name="camera-reverse-outline" style="font-size: 1.5rem;"></ion-icon>
+                        </label>
+                        <input  type="file" 
+                                id="image-input-profile" 
+                                accept="image/*" 
+                                name="img"
+                                (change)="changeImageProfileRegister($event)"
+                                required/> 
+                      </div>
+                    </ion-label>
+                  </ion-col>
+
+
+                </ion-row>
+              </ion-col>
+
+              <ion-col *ngIf="showImageSocial" >
+                <div class="ion-text-center ion-padding">
+                  <p>(Opcional) <br> selecciona una imagen</p>
+                </div>
+              </ion-col>
+              
+              <!-- (change)="cleanUnnecessaryWhiteSpaces(usuario.nickName)" -->
+            </ion-row>
+
+            <div class="ion-text-center ion-padding">
+              <h4 color="light">Los siguientes campos son obligatorios</h4>
+            </div>
+            
+            <ion-item id="itemNickName">
+              <ion-label position="floating">Nombre de usuario <small>(Sin espacios)</small></ion-label>
+              <ion-input  type="text"
+                          [(ngModel)]="usuario.nickName"
+                          name="nickName"
+                          id="inputNickName"
+                          #nickName="ngModel"
+                          (ionChange)="cleanUnnecessaryWhiteSpaces()"
+                          (keypress)="nicknameChange($event)"
+                          [class.is-invalid]="nickName.invalid && nickName.touched"
+                          required></ion-input>
+            </ion-item>
+
+            <ion-item id="itemName">
+              <ion-label position="floating">Nombre completo</ion-label>
+              <ion-input  type="text"
+                          [(ngModel)]="usuario.name"
+                          name="name"
+                          #name="ngModel"
+                          [class.is-invalid]="name.invalid && name.touched"
+                          required></ion-input>
+            </ion-item>
+            <p *ngIf="name.invalid && name.touched" 
+              style="font-size: .8rem;color: red;text-align: center;">
+              Campo requerido
+            </p>
+
+            <ion-item id="itemEmail">
+              <ion-label position="floating">Correo electronico</ion-label>
+              <ion-input  type="email"
+                          [(ngModel)]="usuario.email"
+                          name="email"
+                          [class.is-invalid]="email.invalid && email.touched"
+                          pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                          #email="ngModel"
+                          required></ion-input>
+            </ion-item>
+            <p *ngIf="email.invalid && email.touched" style="font-size: .8rem;color: red;text-align: center;">
+              Email incorrecto
+            </p>
+
+            <div *ngIf="!social">
+
+              <ion-item id="itemPassword">
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-input  type="password"
+                            [(ngModel)]="usuario.password"
+                            name="password"
+                            #password="ngModel"
+                            id="password"
+                            [class.is-invalid]="password.invalid && password.touched"
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,64}$"
+                            required></ion-input>
+              </ion-item>
+    
+              <ion-card *ngIf="password.invalid && password.touched" color="secondary">
+                <ion-card-content style="padding: 5px;">
+                  <small >La contraseña debe contener almenos letras mayúscula, minúscula y números. Tambien debe tener una longitud de minimo 8 caracteres</small>
+                </ion-card-content>
+              </ion-card>
+    
+              <p *ngIf="password.invalid && password.touched "
+                style="font-size: .8rem;color: red;text-align: center;">
+                Contraseña incorrecta
+              </p>
+    
+              <ion-item id="itemPasswordConfirm">
+                <ion-label position="floating">Confirmar contraseña</ion-label>
+                <ion-input  type="password"
+                            [(ngModel)]="usuario.passwordConfirm"
+                            name="passwordConfirm"
+                            id="passwordConfirm"
+                            #passwordConfirm="ngModel"
+                            [class.ion-invalid]="passwordConfirm.invalid && passwordConfirm.touched "
+                            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,64}$"
+                            (change)="confirmPassWord()"
+                            required></ion-input>
+              </ion-item>
+              <p *ngIf="passwordConfirm.invalid && passwordConfirm.touched"
+                style="font-size: .8rem;color: red;text-align: center;">
+                Contraseña incorrecta
+              </p>
+              <p *ngIf="passConfirm"
+                style="font-size: .8rem;color: red;text-align: center;">
+                Las contraseñas no coinciden
+              </p>
+            </div>
+
+
+            <!-- <ion-item button="true" id="open-date-input">
+              <ion-label>Fecha de nacimiento</ion-label>
+              <ion-text slot="end">{{ dateValue }}</ion-text>
+              <ion-popover trigger="open-date-input" show-backdrop="false">
+                <ng-template>
+                  <ion-datetime
+                    #popoverDatetime
+                    presentation="date"
+                    displayFormat="dd/MM/yyyy"
+                    min="1940-01-01"
+                    [(ngModel)]="usuario.birthdate"
+                    name="birthdate"
+                    #birthdate="ngModel"
+                    id="birthdate"
+                    [class.is-invalid]="birthdate.invalid && birthdate.touched"
+                    required
+                    (ionChange)="dateValue = formatDate(popoverDatetime.value)"
+                  ></ion-datetime>
+                </ng-template>
+              </ion-popover>
+            </ion-item> -->
+
+            <ion-item button="true" id="modal-birthday">
+              <ion-label>Fecha de nacimiento</ion-label>
+              <ion-text slot="end" >{{ dateValue }}</ion-text>
+            </ion-item>
+
+
+            <ion-modal trigger="modal-birthday" show-backdrop="true">
+              <ng-template>
+                <ion-datetime
+                  #popoverDatetime
+                  presentation="date"
+                  displayFormat="dd/MM/yyyy"
+                  mode="ios"
+                  min="1940-01-01"
+                  [(ngModel)]="usuario.birthdate"
+                  name="birthdate"
+                  #birthdate="ngModel"
+                  id="birthdate"
+                  required
+                  showDefaultButtons = "true"
+                  cancelText="Cancelar"
+                  doneText="Confirmar"
+                  (ionChange)="dateValue = formatDate(popoverDatetime.value)"
+                ></ion-datetime>
+              </ng-template>
+            </ion-modal>
+
+            <ion-item id="itemTelefono">
+              <ion-label position="floating">Teléfono</ion-label>
+              <ion-input  type="number"
+                          [(ngModel)]="usuario.telefono"
+                          name="telefono"
+                          #telefono="ngModel"
+                          id="telefono"
+                          [class.is-invalid]="telefono.invalid && telefono.touched"
+                          required></ion-input>
+            </ion-item>
+
+
+            <!-- <ion-item id="itemBirthdate">
+              <ion-label position="floating">Fecha de nacimiento</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" 
+                            min="1940-01-01"
+                            [(ngModel)]="usuario.birthdate"
+                            name="birthdate"
+                            #birthdate="ngModel"
+                            id="birthdate"
+                            [class.is-invalid]="birthdate.invalid && birthdate.touched"
+                            required></ion-datetime>
+            </ion-item> -->
+
+            
+
+            <!-- <ion-item id="itemCalle">
+              <ion-label position="floating">Calle y Nº</ion-label>
+              <ion-input  type="text"
+                          [(ngModel)]="usuario.street"
+                          name="street"
+                          #street="ngModel"
+                          id="street"
+                          [class.is-invalid]="street.invalid && street.touched"
+                          required></ion-input>
+            </ion-item>
+
+            <ion-item id="itemCalle">
+              <ion-label position="floating">Colonia </ion-label>
+              <ion-input  type="text"
+                          [(ngModel)]="usuario.suburb"
+                          name="suburb"
+                          #suburb="ngModel"
+                          id="suburb"
+                          [class.is-invalid]="suburb.invalid && suburb.touched"
+                          required></ion-input>
+            </ion-item>
+
+            <ion-row>
+              <ion-col sizeMd="6">
+                <ion-item id="itemCiudad">
+                  <ion-label position="floating"> Municipio / Ciudad</ion-label>
+                  <ion-input  type="text"
+                              [(ngModel)]="usuario.ciudad"
+                              name="ciudad"
+                              #ciudad="ngModel"
+                              id="ciudad"
+                              [class.is-invalid]="ciudad.invalid && ciudad.touched"
+                              required></ion-input>
+                </ion-item>
+              </ion-col>
+              
+              <ion-col sizeMd="6" >
+                <ion-item id="itemZip">
+                  <ion-label position="floating">C. Postal</ion-label>
+                  <ion-input  type="number"
+                              [(ngModel)]="usuario.zip"
+                              name="zip"
+                              #zip="ngModel"
+                              id="zip"
+                              [class.is-invalid]="zip.invalid && zip.touched"
+                              required></ion-input>
+                </ion-item>
+              </ion-col>
+              
+            </ion-row>
+
+            <ion-item id="itemState">
+              <ion-label position="floating">Estado</ion-label>
+              <ion-input  type="text"
+                          [(ngModel)]="usuario.state"
+                          name="state"
+                          #state="ngModel"
+                          id="state"
+                          [class.is-invalid]="state.invalid && state.touched"
+                          required></ion-input>
+            </ion-item> -->
+
+            
+
+            <!-- <ion-item  style="margin: 5px;">
+              <ion-label position="floating">Estado: </ion-label>
+              <ion-select ok-text="Seleccionar" cancel-text="Cancelar"
+                          [(ngModel)]="usuario.state"
+                          name="state"
+                          #state="ngModel"
+                          placeholder="Seleccionar una opción"
+                          id="state">
+                  <ion-select-option  value="{{ state['id'] }}" *ngFor="let state of states">
+                              {{ state['name'] }}
+                  </ion-select-option>
+      
+              </ion-select>
+            </ion-item> -->
+
+            <br>
+            <ion-item color="light" routerLink="/customer/bases">
+              Términos y condiciones
+            </ion-item>
+            <ion-item>
+              <ion-label>Aceptar términos y condiciones</ion-label>
+              <ion-checkbox (ionChange)="addValue($event)"></ion-checkbox>
+            </ion-item>
+
+            <ion-button shape="round"
+                        type="submit"
+                        *ngIf="UploadButton; else nonRegisterButton"
+                        expand="block"
+                        class="ion-padding">
+                        Registrate
+            </ion-button>
+
+            <ng-template #nonRegisterButton>
+              <ion-button shape="round"
+                        (click)="nonRegister()"
+                        expand="block"
+                        class="ion-padding">
+                        Registrate
+            </ion-button>
+            </ng-template>
+
+
+          </form>
+        </ion-list>
+
+        <ion-row class="ion-justify-content-center" style="margin-top: 16px; margin-bottom: 16px;">
+          <ion-col sizeLg="6" sizeSm="12" class="ion-text-center">
+            <div class="ion-text-center">
+              <h3>¿Inicia sesión?</h3>
+            </div>
+            <ion-button shape="round"
+                        expand="block"
+                        class="ion-padding"
+                        (click)="redirectLogin()">
+                        Login
+            </ion-button>
+          </ion-col>
+        </ion-row>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>

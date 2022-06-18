@@ -1,0 +1,34 @@
+<ion-content>
+  <!-- <app-header-shop></app-header-shop> -->
+
+  <ion-row class="ion-justify-content-center submenu pb-50">
+    <ion-col sizeLg="6">
+        <ion-text class="ion-text-center" color="light">
+          <h2>¡PREMIOS!</h2>
+        </ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid class="bg-grid">
+
+    <ion-slides pager="true" [options]="options">
+      <ion-slide>
+        <img src="./../../../assets/images/modalSlider/1.png" />
+      </ion-slide>
+      <ion-slide>
+        <img src="./../../../assets/images/modalSlider/2.png" />
+      </ion-slide>
+      <ion-slide>
+        <img src="./../../../assets/images/modalSlider/3.png" />
+      </ion-slide>
+    </ion-slides>
+
+    <div *ngIf="nonShow; else buttonClose">
+      <ion-button size="small" color="dark" shape="round" expand="full" (click)="noShowPopUp()"><ion-text color="light">Aceptar</ion-text> </ion-button>
+    </div>
+    <ng-template #buttonClose>
+      <ion-button size="small" color="dark" shape="round" expand="full" (click)="dismiss()"><ion-text color="light">Cerrar</ion-text> </ion-button>
+    </ng-template>
+  </ion-grid>
+
+</ion-content>

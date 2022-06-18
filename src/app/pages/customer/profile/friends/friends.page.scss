@@ -1,0 +1,92 @@
+ion-content {
+    --background: var(--ion-background-color2);
+    --color: var(--ion-color-light);
+}
+ion-list {
+  background: var(--ion-background-color2);
+}
+ion-label {
+  padding: 12px;
+}
+ion-item {
+  --inner-padding-bottom: 6px;
+  margin-right: -16px;
+  --background: transparent;
+}
+.position-item {
+  width: 100%;
+  background-color: var(--ion-color-primary);
+  margin-left: 10px;
+  border-radius: 20px 0 0 20px;
+  padding: 4px 0px 0px 4px;
+}
+ion-avatar {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+ion-label {
+  display: inline-block !important;
+  padding: 8px 12px;
+}
+.position-number {
+  font-family: 'tccc-unitycondensedbold';
+  font-size: 28px;
+  color: var(--ion-color-primary);
+  width: 28px;
+  text-align: right;
+}
+
+.text-nickName{
+  margin-right: 16%;
+}
+.position-nick {
+  font-family: 'tccc-unitycondensedmedium';
+  font-size: 16px;
+  color: #FFF;
+}
+.position-divider {
+  padding-top: 40px;
+}
+
+.position-divider .position-item{
+  background-color: var(--ion-color-light);
+}
+
+.position-divider .position-nick{
+  color: var(--ion-color-dark);
+}
+
+.position-divider .position-number{
+  color: var(--ion-color-light);
+}
+
+.statusBadge{
+  margin-top: 1%;
+}
+
+.text-friends{
+  color: var(--ion-color-dark);
+}
+
+ion-badge{
+  color: #FFF !important;
+}
+
+
+.position-divider::before {
+  position: absolute;
+  top: 12px;
+  left: -6px;
+  content: "";
+  width: 100%;
+  height: 30px;
+  border-radius: 60px 60px 0 0;
+  background: var(--ion-color-dark);
+}
+
+@media(max-width: 750px){
+  .statusBadge{
+    margin-top: 4%;
+  }
+}

@@ -1,0 +1,51 @@
+.grid-bg {
+  background: #fff;
+  position: relative;
+}
+.home-menu {
+  margin-left: -1px;
+  margin-right: -1px;
+  background: var(--ion-color-secondary);
+  position: relative;
+  padding-bottom: 38px;
+}
+.home-menu::after {
+  position: absolute;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 48px;
+  border-radius: 45px 45px 0 0;
+  background: #fff;
+}
+
+#validPassword{
+  color: var(--ion-color-light);
+}
+
+ion-modal{
+  --width: 290px;
+  --height: 350px;
+  --border-radius:12px;
+  --background: transparent !important;
+}
+
+ion-item {
+  --color: #000;
+  color: #000;
+}
+
+ion-content{
+  --color: var(--ion-color-dark);
+}
+
+ion-button {
+  --background: var(--ion-color-secondary);
+  --color: #fff;
+}
+ion-checkbox {
+  --color: #fff;
+  --background: #fff;
+  --border-color: var(--ion-color-primary);
+  --background-checked: var(--ion-color-primary);
+}

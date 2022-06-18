@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="secondary" >
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Posiciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="">
+  
+  <ion-grid class="home-menu" >
+    <div class="circle-section"></div>  
+  </ion-grid>
+  
+  <div *ngIf="valperiod_id; else positionExpirate" class="positions">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-text class="ion-text-center" color="secondary">
+            <h2 >Top 20 a Xel-Há</h2>
+            <!-- <h3>Corte {{numPeriod}}</h3> -->
+            <h3>({{initialDate}} - {{ endDate }})</h3>
+            <img src="../../../../assets/awards/carrera-xelha.gif" alt="carrera-xelha">
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-list lines="none">
+      <ng-container *ngFor="let user of positions; let i = index" >
+        <ion-item [color]="i < 5 ? 'secondary' : ''" [ngClass]="[i == 0 ? 'position-divider' : '',i == 5 ? 'mt-item' : ''] ">
+          <span [ngClass]="i > 4 ? 'position-number' : 'position-number-divider' ">{{ i+1 }}.</span>
+          <div class="position-item">
+            <ion-avatar *ngIf="user.image;else imageNon">
+              <ion-img  [src]="user.image" ></ion-img>
+            </ion-avatar>
+            <ng-template #imageNon>
+                <ion-avatar>
+                  <img src="assets/images/profile-icon.png" alt="">
+              </ion-avatar>
+            </ng-template>
+
+            <ion-label class="ion-text-wrap" color="dark">
+              <p class="position-nick">{{ user.nickName }}</p>
+            </ion-label>
+          </div>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+  </div>
+
+  <ng-template #positionExpirate >
+    <div style="margin-top: 200px">
+      <ion-text class="ion-text-center" color="light">
+          <h1>Fin de la promoción</h1>
+        </ion-text>
+        <ion-row class="ion-align-items-center">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button routerLink="/customer/winners"><ion-icon name="medal-outline" style="font-size: 1.5rem;margin-right: 5px;"></ion-icon>Lista de ganadores</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ng-template>
+
+</ion-content>

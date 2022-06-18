@@ -1,0 +1,19 @@
+ion-content {
+    --background: var(--ion-color-light);
+    --color: var(--ion-color-dark);
+}
+
+ion-item{
+    color: var(--ion-color-dark);
+}
+
+ion-modal{
+    --width: 290px;
+    --height: 320px;
+    --border-radius:12px;
+    --background: transparent !important;
+  }
+  
+  ion-modal.ios{
+    --height: 345px ;
+  }

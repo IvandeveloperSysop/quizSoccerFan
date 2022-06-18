@@ -1,0 +1,91 @@
+ion-content {
+  --background: var(--ion-color-light);
+  --color: var(--ion-color-dark);
+}
+
+ion-text {
+  // color: #FFF !important;
+  ol {
+    list-style-type: lower-alpha;
+  }
+  ul, ol {
+    padding-left: 24px;
+  }
+  h4 {
+    margin-top: 32px;
+  }
+  p {
+    font-size: 12px !important;
+  }
+  li {
+    font-size: 12px !important;
+  }
+}
+
+
+@media (min-width: 750px) {
+  ion-text{
+    text-align: justify;
+    h5 {
+      margin-top: 32px;
+    }
+    p {
+      font-size: 18px !important;
+    }
+    li {
+      font-size: 18px !important;
+    }
+    td {
+      font-size: 18px !important;
+    }
+  }
+
+  table, td, th {
+    white-space: nowrap;
+  }
+
+}
+
+.table-responsive {
+  display: block;
+  max-width: 900px;
+  margin: 8px auto 24px;
+  overflow-x: scroll;
+
+  table {
+    border: collapse;
+    width: 100%;
+  }
+
+  table, td, th {
+    border: solid 1px #333;
+    color: #333;
+  }
+
+  th {
+    font-family: "tccc-unitycondensedbold";
+  }
+  td {
+    font-family: var(--ion-font-family);
+    padding: 3px;
+  }
+}
+
+@media(max-width: 750px){
+  ion-content {
+    //--background: url("./../../../../../assets/images/botellasBack.png") no-repeat center center / cover;
+    // --background: url("./../../../../../assets/bg/backPicos.png") no-repeat center center / cover ;
+  }
+
+  .table-responsive {
+    display: block;
+    max-width: 370px;
+    // margin: 8px auto 24px;
+    // overflow-x: scroll;
+    
+    td, th{
+      vertical-align: middle;
+    }
+  }
+  
+}

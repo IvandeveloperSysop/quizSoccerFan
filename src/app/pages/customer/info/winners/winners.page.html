@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ganadores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="grid-bg">
+    <ion-row class="ion-justify-content-center" >
+      <ion-col sizeLg="8">
+        <ion-row>
+          <ion-col>
+            <ion-text class="ion-text-center">
+              <h4>"TABLETÍZAE"</h4>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-text>
+              <p>No olvides consultar la lista de ganadores 6 días después de cada corte quincenal.</p>      
+            </ion-text>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-segment (ionChange)="segmentChanged($event)">
+      <ion-segment-button *ngFor="let period of periods"
+                          [value]="period['id']">
+        <ion-label>Corte {{period['order']}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-list lines="none"  *ngIf="validWinners;else nonWineers" style="margin-top: 20px;">
+      <ng-container *ngFor="let user of winners; let i = index">
+        <ion-item [color]="i < 3 ? '' : 'secondary'" [ngClass]="i == 3 ? 'position-divider' : '' ">
+          <span [ngClass]="i >= 3 ? 'position-number-divider' : 'position-number' ">{{ user.position }}.</span>
+          <div class="position-item">
+  
+            <ion-label class="ion-text-wrap" color="tertiary" >
+              <p class="position-nick">{{ user.name }}</p>
+              <p class="position-nick-points" style="margin-left: 12px;">{{ user.awardName}}</p>
+
+            </ion-label>
+            <!-- <ion-label class="ion-text-wrap" color="dark" style="margin-left: 4%;">
+              <p class="position-nick-points">{{ user.points}}</p>
+            </ion-label> -->
+          </div>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+
+    <ng-template #nonWineers>
+      <ion-text class="ion-text-center">
+        <h1 class="title-winners">Aún no hay ganadores</h1>
+      </ion-text>
+    </ng-template>
+  </ion-grid>
+</ion-content>

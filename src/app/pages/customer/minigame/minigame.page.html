@@ -1,0 +1,30 @@
+<ion-content class="">
+  <app-header></app-header>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="6">
+        <ion-button expand="block" fill="clear"  (click)="presentModal()" id="buttonInstrucciones">
+          <ion-icon slot="start" name="information-circle"></ion-icon>
+          INSTRUCCIONES
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeMd="8" sizeLg="8">
+        <ion-row>
+          <ion-col>
+            <div class="minigame-container">
+              <iframe [src]="openURL()" scrolling="no" frameborder="0"></iframe>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" routerLink="/home">Regresar al inicio</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

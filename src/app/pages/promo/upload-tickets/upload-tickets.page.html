@@ -1,0 +1,218 @@
+
+<ion-content>
+
+  <app-header-shop></app-header-shop>
+  
+  <!--<ion-grid class="home-menu">
+    <div class="circle-section"></div>  
+  </ion-grid>-->
+
+  <ion-row class="ion-justify-content-center pb-50">
+    <ion-col sizeLg="6">
+      <ion-button fill="clear" color="light" routerLink="/promo/steps" id="buttonPasos">
+        <ion-icon slot="start" name="information-circle"></ion-icon>
+        <ion-text >
+          <b>Pasos para participar</b>
+        </ion-text>
+      </ion-button>
+      </ion-col>
+  </ion-row>
+
+  <ion-grid class="formGrid">
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeLg="6">
+        <ion-card class="mt-50" color="light">
+          <ion-card-content>
+
+            <img [src]="imageBanner">
+            
+            <ion-row>
+              <ion-col size="4" size-xs="12">
+                <ion-text color="dark">
+                  <b class="text-titleMarca">Fecha de duración de la promoción:</b>
+                  <p class="textDate-promo">({{ dateMin }} - {{ final_date }})</p>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+
+
+            <ion-list>
+              <form #formulario="ngForm" id="formulario" (ngSubmit)="onSubmit(formulario)" enctype="multipart/form-data">
+                <!-- MD -->
+                <ion-item lines="none">
+                  <h2 id="presentationText">Elige las presentaciones:</h2>
+                </ion-item>
+                <ion-item color="secondary" style="margin: 5px;" id="present{{i}}" *ngFor="let presentation of presentations; let i = index">
+                  <!-- Input with value -->
+                  <ion-label class="ion-text-wrap lbl-form">{{presentation['name']}}:</ion-label>
+                  <ion-input  type="number"
+                    (change)="presentationChange($event,presentation['id'])"
+                    placeholder="0"
+                    class="ion-text-end presentationInput"
+                    name="present"></ion-input>
+                </ion-item>
+
+                <!-- <ion-item color="secondary" style="margin: 5px;">
+                  <ion-label class="lbl-form" position="floating">Tienda</ion-label>
+                  <ion-select ok-text="Seleccionar" cancel-text="Cancelar"
+                              [(ngModel)]="ticket.store"
+                              name="store"
+                              #store="ngModel"
+                              placeholder="Seleccionar una opción"
+                              id="store">
+                      <ion-select-option  value="7-Eleven">
+                                          7-Eleven
+                      </ion-select-option>
+                      <ion-select-option  value="Del Río">
+                                          Del Río
+                      </ion-select-option>
+                      <ion-select-option  value="Extra">
+                                          Extra.
+                      </ion-select-option>
+                      <ion-select-option  value="Farmacias Guadalajara">
+                                          Farmacias Guadalajara
+                      </ion-select-option>
+                      <ion-select-option  value="Kiosko">
+                                          Kiosko
+                      </ion-select-option>
+    
+                  </ion-select>
+                </ion-item> -->
+
+                <ion-item color="secondary" style="margin: 5px;" id="itemDate">
+                  <ion-label class="lbl-form">Fecha del ticket:</ion-label>
+                  <ion-datetime display-format="DD MM YYYY"
+                                [(ngModel)]="ticket.fecha"
+                                [min]="dateMin"
+                                [max]="dateMax"
+                                name="fecha"
+                                style="width: 50%; text-align: right;"
+                                placeholder="dd/mm/yyyy"
+                                required>
+                  </ion-datetime>
+                </ion-item>
+                <ion-item>
+                  <ion-grid style="height: 200px; ">
+                    <ion-row>
+                      <ion-col size="4" class="ticket-zone-icon bg">
+                        <ion-label class="camera-icon">
+                          <div class="image-upload">
+                            <label for="file-input" >
+                              <ion-icon name="camera-outline"  style="font-size: 4rem;"></ion-icon>
+                            </label>
+                            <input  type="file" id="file-input" accept="image/*" name="img" [(ngModel)]="ticket.image" (change)="updateSource($event)" required/>
+                          </div>
+                        </ion-label>
+                        <p class="home-text" >FOTO DEL TICKET</p>
+                      </ion-col>
+            
+                      <ion-col *ngIf="!source" size="8" class="ticket-zone" >
+                        <div class="image-upload bg" >
+                            <ion-label color="danger">
+                              <p *ngIf="labelErrorImg">Debe adjuntar la imagen del ticket</p>
+                            </ion-label>
+                        </div>
+                      </ion-col>
+          
+                      <ion-col *ngIf="source" size="8" class="ticket-zone">
+                        <div class="image-upload" >
+                            <ion-img [src]="source" src=""></ion-img>
+                        </div>
+                      </ion-col>
+          
+                    </ion-row>
+                  </ion-grid>
+            
+                  <!-- Input with value -->
+                </ion-item>
+                <ion-button type="submit" 
+                            expand="block"
+                            shape="round"
+                            *ngIf="UploadButton; else nonUploadButton"
+                            [disabled]="!buttonValid"
+                            style="margin: 15px;"
+                            class="uploadTicket">
+                  SUBIR TICKET
+                </ion-button>
+                <ng-template #nonUploadButton>
+                  <ion-button
+                            expand="block"
+                            shape="round"
+                            (click)="uplodadNoValid()"
+                            style="margin: 15px;">
+                            SUBIR TICKET
+                  </ion-button>
+                </ng-template>
+              </form>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card color="light">
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="4" size-xs="12">
+                <ion-text color="dark">
+                  <b class="text-titleMarca">MARCAS PARTICIPANTES:</b>
+                </ion-text>
+              </ion-col>
+
+              <ion-col size="8" size-xs="12">
+                <ion-img src="assets/logos/marcas1.png" class="imagePatrocinios" ></ion-img>
+
+                <ion-button fill="clear" color="secondary" routerLink="/customer/steps/productos" id="buttonPasos">
+                  <ion-icon slot="start" name="information-circle"></ion-icon>
+                  <ion-text >
+                    <b>Lista de productos</b>
+                  </ion-text>
+                </ion-button>
+
+              </ion-col>
+
+              <!-- <ion-col size="4" size-xs="12">
+                <ion-text color="dark">
+                  <b class="text-titleMarca">CADENAS PARTICIPANTES:</b>
+                </ion-text>
+              </ion-col> -->
+              <ion-col size="8" size-xs="12">
+                <ion-img src="assets/logos/main.png" class="imageCadenas" ></ion-img>
+              </ion-col>
+              <ion-col size="4" size-xs="12">
+                <ion-text color="dark">
+                  <b class="text-titleMarca">TERRITORIOS PARTICIPANTES:</b>
+                </ion-text>
+              </ion-col>
+              <ion-col size="8" size-xs="12">
+                <ion-text color="dark">
+                  <p class="home-text marcas-text" style="margin-top: 0;">Mazatlán, Guadalajara, Manzanillo y Tecomán.</p>
+                </ion-text>
+              </ion-col>
+              <ion-col size="4" size-xs="12">
+                <ion-text color="dark">
+                  <b class="text-titleMarca">RESTRICCIONES:</b>
+                </ion-text>
+              </ion-col>
+              <ion-col size="8" size-xs="12">
+                <ion-text color="dark">
+                  <p class="home-text marcas-text" style="margin-top: 0;">Solo se aceptan tickets con fecha dentro de la carrera de compras.</p>
+                  <p class="home-text marcas-text" style="margin-top: 0;">No se aceptarán tickets de otra cadena, este Programa es exclusivo de Tiendas Kiosko.</p>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>              
+        
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeLg="6">
+        <ion-row>
+          <ion-col sizeXs="12" sizeMd="6" sizeLg="4" class="ion-text-center ion-align-self-center">
+            <ion-button class="ion-text-wrap" routerLink="/customer/bases" id="buttonBases">CONSULTAR BASES DEL CONCURSO</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

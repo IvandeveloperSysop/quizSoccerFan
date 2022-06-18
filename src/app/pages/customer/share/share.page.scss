@@ -1,0 +1,46 @@
+.home-text {
+    font-family: 'tccc-unitycondensedmedium';
+    font-size: 14px;
+    text-align: center;
+}
+
+.title-share{
+    font-family: 'tccc-unitycondensedmedium';
+}
+
+.imageShareUpload{
+    max-height: 250px;
+    width: 100%;
+    overflow: scroll;
+}
+
+ion-content {
+  --background: var(--ion-color-light);
+  --color: var(--ion-color-dark);
+}
+
+.labelActive{
+  color: var(--ion-color-light);
+}
+
+
+ion-segment-button{
+  color: var(--ion-color-dark);
+}
+
+.segment-button-checked{
+  color: var(--ion-color-primary);
+}
+
+.ios .segment-button-checked{
+  color: #000;
+}
+
+
+.labelNormal {
+  color: var(--ion-color-dark);
+}
+
+#insertPicture p{
+  color: var(--ion-color-dark);
+}

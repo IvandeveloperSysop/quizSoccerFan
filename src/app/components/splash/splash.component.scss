@@ -1,0 +1,70 @@
+
+
+.app-splash-screen {
+  background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url("/assets/logos/login.png") repeat center center;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  opacity: 1;
+}
+
+.app-label {
+  margin-top: 32px;
+  color: #fff;
+  font-size: 2.5em;
+  font-family: "Pacifico", cursive;
+}
+
+.app-splash-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-logo {
+  // background: url("./../../assets/lighty.svg");
+  background-repeat: no-repeat;
+  max-width: 100%;
+  background-position: center;
+  background-size: contain;
+  width: 100px;
+  height: 100px;
+}
+
+.app-loader {
+  background: url("/assets/icons/loader.svg");
+  background-repeat: no-repeat;
+  max-width: 100%;
+  background-position: center;
+  background-size: contain;
+  width: 80px;
+  height: 80px;
+  margin-top: 80px;
+}
+
+@media (min-width:768px){
+
+  .app-splash-screen {
+    background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url("/assets/logos/login-desktop.png") no-repeat center center, #FF8A01 !important;
+  }
+
+}
+
+@media (min-width:1400px){
+
+  .app-splash-screen {
+    background: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url("/assets/logos/login-desktop-xl.png") no-repeat center center, #FF8A01 !important;
+    background-size: cover !important;
+  }
+
+}

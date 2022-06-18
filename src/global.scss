@@ -1,0 +1,187 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import 'theme/fonts.scss';
+
+ion-content {
+  //--background: #de0b1c;
+  --padding-top: 0px !important;
+  --offset-bottom: 0px !important;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Gotham Rounded', 'Verdana';
+}
+
+// p, ion-label, ion-button,ion-item{
+//   font-family: 'foundrygridnikregular', 'Times New Roman';
+// }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+  -moz-appearance:textfield !important;
+}
+input[type='file'] {
+  display: none;
+}
+ion-button {
+  font-family: 'tccc-unitycondensedmedium';
+  font-size: 18px;
+}
+ion-toolbar {
+  --background: var(--ion-background-color2);
+  --color: var(--ion-color-light);
+  font-family: 'tccc-unitycondensedmedium';
+  font-size: 20px;
+}
+ion-list {
+  background: transparent !important;
+}
+ion-item {
+  --background: transparent;
+}
+
+ion-slides{
+  // padding-bottom: 40px !important;
+  // margin-bottom: 40px !important;
+}
+
+.swiper-pagination-bullet {
+  background: white;
+  width: 38px !important;
+  height: 4px !important;
+  border-radius: 0 !important;
+  opacity: .6;
+}
+.swiper-pagination-bullet-active {
+  background: #094438;
+  opacity: 1;
+}
+
+
+.alert-wrapper{
+  --background: var(--ion-color-light);
+  .alert-title{
+    color: #000;
+  }
+
+  #emailReset{
+    color: #000;
+  }
+}
+
+.alert-wrapper {
+  .alert-button:first-child {
+    color: red;
+  }
+}
+.errorInput{
+  border: 2px #FA0505 solid !important;
+}
+
+.transparent-modal {
+    .modal-wrapper {
+        --background: rgba(44, 39, 45, 0.2);
+    }
+}
+
+.custom-sheet {
+  --button-color: var(--ion-color-light);
+  --color: #000;
+  ion-icon{
+    --color: #000;
+  }
+}
+
+.action-sheet-button{
+  color: #000 !important;
+}
+
+ion-picker {
+  --background: #fff !important;
+
+  .picker-button {
+    color: var(--ion-color-primary2, #3880ff);
+  }
+}
+
+.myalert .alert-wrapper{
+  background: var(--ion-color-light);
+  .alert-title, .alert-message, .alert-button{
+    color: var(--ion-color-secondary);
+  }
+}
+
+
+.picker-opt{
+  color: var(--ion-color-dark);
+}
+
+
+ion-alert {
+
+
+  // Header Text
+  .alert-title.sc-ion-alert-md {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: "AustralisProSwash-Italic";
+    color: var(--ion-text-color, #00000080);
+  }
+
+  // wrap the text
+  .alert-radio-label.sc-ion-alert-md {
+    white-space: pre-line !important;
+    font-family: "AustralisProSwash-Italic";
+    color: var(--ion-text-color, #000000b3);
+    font-weight: bold;
+  }
+
+  .alert-radio-label.sc-ion-alert-md{
+    color : #000 !important;
+  }
+
+  .alert-radio-label.sc-ion-alert-ios{
+    color : #000 !important;
+  }
+
+
+  // Checked text color
+  [aria-checked="true"].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md {
+    color: var(--ion-color-step-850, #262626);
+  }
+
+  // Button color
+  .alert-button-inner.sc-ion-alert-md {
+    color: #00000080;
+    font-weight: bold;
+    font-size: larger;
+  }
+}

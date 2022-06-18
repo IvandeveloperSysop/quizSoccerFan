@@ -1,0 +1,113 @@
+<ion-header>
+  <!-- <ion-row class="">
+    <ion-col size-xs="5" size-md="5" class="ion-align-self-center"> -->
+      <ion-toolbar color="secondary" >
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="customer/help"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Mis tickets</ion-title>
+      </ion-toolbar>
+    <!-- </ion-col>
+    <ion-col size="7">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-xs="4" size-md="3" class="ion-align-self-center">
+          <img src="assets/logos/main.png" alt="Programa de recompensas" class="imageHeader">
+        </ion-col>
+        <ion-col size-xs="4" size-md="3" class="ion-align-self-center">
+          <img src="assets/logos/main2.png" alt="Programa de recompensas" class="imageHeader">
+        </ion-col>
+        <ion-col size-xs="4" size-md="3" class="ion-align-self-center">
+          <img src="assets/logos/main3.png" alt="Programa de recompensas" class="imageHeader">
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row> -->
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeMd="10" sizeSm="12" >
+  
+        <ion-list>
+          <ion-row class="ion-margin-bottom" *ngIf=" showTickets; else nonInfo">
+            <ion-col size-xs="12" size-sm="6" size-md="4" *ngFor="let ticket of tickets" >
+              
+              <ion-card color="light" style="max-height: 72vh">
+                <ng-container *ngIf="ticket.image;else secondImage">
+                  <ion-img [src]="ticket.image" style="height: 300px;"></ion-img>
+                </ng-container>
+                <ng-template #secondImage>
+                  <ng-container>
+                    <ion-img  src="./assets/images/image-not.png"  style="height: 300px;"></ion-img>
+                  </ng-container>
+                </ng-template>
+
+                <ion-item>
+                  <ion-icon name="briefcase-outline" color="dark"></ion-icon>
+                  <ion-label color="dark">Promoción</ion-label>
+                  <ion-note slot="end">{{ ticket.namePromo }}</ion-note>
+                </ion-item>
+
+                <ion-item>
+                  <ion-icon name="calendar" slot="start" color="dark"></ion-icon>
+                  <ion-label color="dark">Fecha del ticket</ion-label>
+                  <ion-note slot="end">{{ ticket.date_ticket }}</ion-note>
+                </ion-item>
+
+                <ion-item>
+                  <ion-icon name="ellipse" slot="start" color="dark"></ion-icon>
+                  <ion-label color="dark">Cantidad de puntos</ion-label>
+                  <ion-note slot="end">{{ ticket.ticketPoints }}</ion-note>
+                </ion-item>
+
+                <!-- <ion-item>
+                  <ion-icon name="ellipse" slot="start"></ion-icon>
+                  <ion-label>Puntos extras</ion-label>
+                  <ion-note slot="end">{{ ticket.extrapoints }}</ion-note>
+                </ion-item> -->
+                <ion-item lines="none">
+                  <ion-icon name="alert-circle" slot="start" color="dark"></ion-icon>
+                  <ion-label color="dark">Estatus</ion-label>
+
+                  <ng-container *ngIf="ticket.status_id === 1">
+                    <ion-badge color="success" slot="end">{{ ticket.status }}</ion-badge>
+                  </ng-container>
+                  <ng-container *ngIf="ticket.status_id === 2">
+                    <ion-badge color="warning" slot="end">{{ ticket.status }}</ion-badge>
+                  </ng-container>
+                  <ng-container *ngIf="ticket.status_id == 46">
+                    <ion-badge color="warning" slot="end">Ticket invalidado</ion-badge>
+                  </ng-container>
+                  <ng-container *ngIf="ticket.status_id === 0">
+                    <ion-badge color="danger" slot="end">{{ ticket.status }}</ion-badge>
+                  </ng-container>
+                </ion-item>
+                <ng-container *ngIf="ticket.status_id === 0">
+                  <ion-item>
+                    <ion-icon name="chatbox" slot="start"></ion-icon>
+                    <ion-note class="ion-aling-self-center">{{ ticket.comment }}.</ion-note>
+                  </ion-item>
+                </ng-container>
+              </ion-card>  
+            </ion-col>
+          </ion-row>
+          <ng-template #nonInfo>
+            <ion-text class="ion-text-center">
+              <h2>No cuentas con ningún ticket cargado</h2>
+            </ion-text>
+          </ng-template>
+        </ion-list>
+  
+        <ion-infinite-scroll *ngIf="count > 9" threshold="100px" (ionInfinite)="loadData($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

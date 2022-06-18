@@ -1,0 +1,63 @@
+<ion-content >
+  <app-header></app-header>
+  <ion-grid class="home-menu" >
+    <div class="circle-section"></div>  
+  </ion-grid>
+
+  <ion-grid class="grid-bg">
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeLg="6" sizeSm="12" >
+        <ion-row>
+          <ion-col>
+            <div *ngIf="!videoPath">
+              <ion-skeleton-text animated></ion-skeleton-text>
+            </div>
+            <div *ngIf="videoPath">
+              <iframe [src]="videoPath" width="100%" height="240" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen></iframe>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-align-items-center">
+          <ion-col size="12"  class="ion-text-center">
+            <h2>{{ main }}</h2>
+            <p>{{ secondary }}</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="12" class="ion-text-center ">
+            <ion-button class="ion-text-wrap" routerLink="/customer/bases" id="buttonBases">CONSULTAR BASES DEL CONCURSO</ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-align-items-center">
+          <ion-col size="12"  class="ion-text-center" >
+              <ion-button class="ion-text-wrap" (click)="registerCampaign()" id="buttonRegister"> REGISTRATE AHORA</ion-button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-align-items-center">
+          <ion-col size="12"  class="ion-text-center">
+            <h2>¡Conoce los premios!</h2>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-align-items-center">
+          <ion-col>
+            <ion-slides [options]="sliderOpts" zoom>
+              <ion-slide >
+                <div class="swiper-zoom-container">
+                  <img [src]="imagePath" >
+                </div>
+              </ion-slide>
+            </ion-slides>
+          </ion-col>
+        </ion-row>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>

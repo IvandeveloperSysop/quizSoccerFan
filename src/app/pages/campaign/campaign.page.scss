@@ -1,0 +1,50 @@
+#butttonRegister{
+    color: var(--ion-color-light);
+}
+.grid-bg {
+    background: #fff;
+    position: relative;
+  }
+  .home-menu {
+    margin-left: -1px;
+    margin-right: -1px;
+    background: var(--ion-color-secondary);
+    position: relative;
+    padding-bottom: 38px;
+  }
+  .home-menu::after {
+    position: absolute;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 48px;
+    border-radius: 45px 45px 0 0;
+    background: #fff;
+  }
+  ion-button {
+    --background: var(--ion-background-color2);
+    --color: #fff;
+  }
+  ion-checkbox {
+    --color: #fff;
+    --background: #fff;
+    --background-checked: var(--ion-background-color2);
+  }
+
+  #buttonRegister{
+    color: var(--ion-color-light);
+    --background: var(--ion-color-secondary);
+    width: 220px;
+}
+
+#buttonBases{
+    color: var(--ion-color-light);
+    --background: #99A3A4;
+    width: 220px;
+}
+
+
+h3{
+    margin-top: 25px;
+    margin-bottom: 15px;
+}

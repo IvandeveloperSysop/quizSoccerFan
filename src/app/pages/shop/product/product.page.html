@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="bg-grid">
+    <ion-row class="ion-justify-content-center" class="mt-50">
+      <ion-col sizeLg="6">
+        <ion-card color="light">
+          <img src="assets/awards/play5.jpg" />
+          <ion-card-header>
+            <ion-card-subtitle>$$$</ion-card-subtitle>
+            <ion-card-title>Play Station 5</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Consola de videojuego de última generación
+            <ion-row class="ion-justify-content-end">
+              <ion-col size="6">
+                <!-- Expand -->
+                <ion-button size="small" color="medium" shape="round" expand="full" routerLink="/cart/1">Comprar</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col sizeLg="6">
+        <ion-card color="light">
+          <img src="assets/awards/play5.jpg" />
+          <ion-card-header>
+            <ion-card-subtitle>$$$</ion-card-subtitle>
+            <ion-card-title>Giftcard 200</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Tarjeta de regalo para Netflix
+            <ion-row class="ion-justify-content-end">
+              <ion-col size="6">
+                <!-- Expand -->
+                <ion-button size="small" color="medium" shape="round" expand="full" routerLink="/cart/1">Comprar</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,67 @@
+<ion-content>
+  <app-header-shop></app-header-shop>
+
+  <ion-row class="ion-justify-content-center submenu pb-50">
+    <ion-col sizeLg="6">
+        <ion-text class="ion-text-center" color="light">
+          <h2>POSICIONES</h2>
+        </ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid class="bg-grid">
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeLg="6">
+        <ion-card class="mt-50" color="light">
+          <div *ngIf="valid_period; else positionExpirate" class="positions ion-text-center">
+            <ion-text class="ion-text-center" color="secondary">
+              <h3>Corte {{numPeriod}}</h3>
+              <h3>({{initialDate}} - {{ endDate }})</h3>
+
+              <ion-chip class="chipLogout" routerLink="/promo/awards">
+                <ion-label style="width: 100%;text-align: start;display: flex;"> <p><ion-icon name="trophy" style="margin-right: 5px;"></ion-icon>Consulta los premios</p> </ion-label>
+              </ion-chip>
+
+            </ion-text>
+        
+            <ion-list lines="none">
+              <ng-container *ngFor="let user of positions; let i = index" >
+                <ion-item [color]="i < 3 ? '' : 'secondary'" [ngClass]="i == 3 ? 'position-divider' : '' ">
+                  <span [ngClass]="i < 3 ? 'position-number' : 'position-number-divider' ">{{ i+1 }}.</span>
+                  <div class="position-item">
+                    <ion-avatar *ngIf="user.image;else imageNon">
+                      <ion-img  [src]="user.image" ></ion-img>
+                    </ion-avatar>
+                    <ng-template #imageNon>
+                        <ion-avatar>
+                          <img src="assets/images/profile-icon.png" alt="">
+                      </ion-avatar>
+                    </ng-template>
+        
+                    <ion-label class="ion-text-wrap" color="dark">
+                      <p class="position-nick">{{ user.nickName }}</p>
+                    </ion-label>
+                  </div>
+                </ion-item>
+              </ng-container>
+            </ion-list>
+          </div>
+        
+          <ng-template #positionExpirate >
+            <div style="margin-top: 200px; margin-bottom: 160px">
+              <ion-text class="ion-text-center" color="secondary">
+                  <h1>Fin de la promoción</h1>
+                </ion-text>
+                <ion-row class="ion-align-items-center">
+                <ion-col size="12" class="ion-text-center">
+                  <ion-button routerLink="/customer/winners"><ion-icon name="medal-outline" style="font-size: 1.5rem;margin-right: 5px;"></ion-icon>Lista de ganadores</ion-button>
+                </ion-col>
+              </ion-row>
+            </div>
+          </ng-template>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

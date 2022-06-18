@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mis amigos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-list style="margin-top: 3%;" lines="none" *ngIf="data; else loading">
+    <div *ngIf=" showFriends; else nonInfo">
+    <ng-container *ngFor="let user of data; let i = index" >
+        <!-- <ion-item [color]="i < 3 ? '' : 'dark'" [ngClass]="i == 3 ? 'position-divider' : '' "> -->
+          <ion-item>
+          <span class="position-number" >{{ i+1 }}.</span>
+          <div class="position-item">
+            <ion-row>
+              <ion-col size="2">
+                <ion-avatar *ngIf="user.image;else imageNon">
+                  <ion-img  [src]="user.image" src=""></ion-img>
+                </ion-avatar>
+                <ng-template #imageNon>
+                    <ion-avatar>
+                      <img src="assets/images/profile-icon.png" alt="">
+                  </ion-avatar>
+                </ng-template>
+              </ion-col>
+              <ion-col size="6">
+                <ion-label class="ion-text-wrap">
+                  <p class="position-nick">{{ user.nickName }}</p>
+                </ion-label>
+              </ion-col>
+              <ion-col size="2" class="statusBadge">
+                <ion-badge *ngIf="user.statusId == 3;else section2">
+                  En revision
+                </ion-badge>
+                <ng-template #section2>
+                  <ion-badge color="danger" *ngIf="user.statusId == 4;else section3">
+                    {{ user.status }}
+                  </ion-badge>
+                </ng-template>
+                <ng-template #section3>
+                  <ion-badge color="success">
+                    {{ user.status }}
+                  </ion-badge>
+                </ng-template>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-item>
+      </ng-container>
+    </div>
+    <ng-template #nonInfo >
+      <ion-text class="ion-text-center text-friends">
+        <h2 >Aún no has invitado a ningún amigo</h2>
+      </ion-text>
+    </ng-template>
+  </ion-list>
+
+  <ng-template #loading>
+    <ion-list >
+      <ng-container>
+        <ion-item>
+          <span class="position-number">
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+          </span>
+          <div class="position-item">
+            <ion-item *ngFor="let item of item">
+              <ion-avatar slot="start">
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-avatar>
+              <ion-label>
+                <p>
+                  <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+                </p>
+              </ion-label>
+              <ion-label slot="end">
+                <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+              </ion-label>
+            </ion-item>
+          </div>
+        </ion-item>
+      </ng-container>
+    </ion-list>
+  </ng-template>
+
+  <ion-text class="ion-text-center text-friends">
+    <h2>Invita a tus amigos a participar</h2>
+  </ion-text>
+
+  <ion-row class="ion-align-items-center">
+    <ion-col size="12" class="ion-text-center">
+      <ion-button color="secondary" routerLink="/customer/share"><ion-icon name="person-add-outline" style="font-size: 1.5rem;margin-right: 5px;"></ion-icon>Invitar amigos</ion-button>
+    </ion-col>
+  </ion-row>
+  
+
+</ion-content>

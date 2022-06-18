@@ -1,0 +1,32 @@
+ion-toolbar {
+    --background: rgba(0,0,0,0);
+}
+
+ion-content {
+    --background: #fff;
+    text-align: center;
+
+    img {
+        padding-top: 28px;
+        width: 50%;
+    }
+
+    .desc {
+        text-align: left;
+        padding-bottom: 20px;
+
+        h4 {
+            font-weight: 900;
+        }
+
+        h6 {
+            font-weight: 400;
+            color: #47615a;
+            line-height: .7cm;
+        }
+    }
+
+    // .formGrid{
+    //     background: var(--ion-background-color2);
+    // }
+}

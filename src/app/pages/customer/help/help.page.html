@@ -1,0 +1,69 @@
+<ion-content color="light">
+
+  <app-header-shop></app-header-shop>
+
+  <ion-grid class="home-menu">
+    <div class="circle-section"></div>  
+  </ion-grid>
+  
+  <div class="contentHelp">
+
+    <ion-text color="secondary">
+      <h2 class="menu-title">Mi perfil</h2>
+    </ion-text>
+    <ion-card color="light">
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item color="light" routerLink="/customer/tickets">
+            <ion-icon name="ticket-outline" slot="start"></ion-icon>
+            Mis tickets
+          </ion-item>
+          <ion-item color="light" routerLink="/customer/friends">
+            <ion-icon name="people-outline" slot="start"></ion-icon>
+            Mis amigos
+          </ion-item>
+          <ion-item color="light" routerLink="/customer/edit-profile">
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            Editar datos
+          </ion-item>
+          <ion-item color="light" (click)="logout()">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            Cerrar Sesión
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-text color="secondary">
+      <h2 class="menu-title">¿Tienes alguna duda?</h2>
+    </ion-text>
+    <ion-card color="light">
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item color="light" routerLink="/customer/bases">
+            Bases y mecánicas para el concurso
+          </ion-item>
+          <!-- <ion-item color="light" routerLink="/customer/awards">
+            Premios
+          </ion-item> -->
+          <ion-item color="light" routerLink="/customer/steps">
+            Pasos para ganar
+          </ion-item>
+          <!-- <ion-item color="light" routerLink="/customer/dates">
+            Fechas de cortes
+          </ion-item> -->
+          <!-- <ion-item color="light" routerLink="/customer/winners">
+            Lista de ganadores
+          </ion-item> -->
+          <ion-item color="light" (click)="openPDF()">
+            Aviso de privacidad
+          </ion-item>
+          <ion-item color="light" routerLink="/customer/contact">
+            Contáctanos
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

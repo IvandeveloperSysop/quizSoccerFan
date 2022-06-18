@@ -1,0 +1,240 @@
+<ion-content >
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center" id="rowResponsive">
+      <ion-col size-xs="8" size-md="4">
+        <img src="assets/logos/main.png" class="KIOSKO" alt="">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid >
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="12" size-md="9" size-lg="7">
+        <!-- new component -->
+        <ion-row class="ion-justify-content-center">
+          <ion-col size-xs="10" size-md="6" size-lg="5">
+            <ion-card class="card-info">
+              <ion-card-content style="padding: 0px">
+                <ion-row>
+
+                  <ion-col size="3" class="imageNav">
+                    <ion-avatar *ngIf="userImage; else imageNon">
+                      <ion-img  [src]="userImage" src=""></ion-img>
+                    </ion-avatar>
+                    <ng-template #imageNon>
+                        <ion-avatar >
+                          <img src="assets/images/profile-icon.png" >
+                      </ion-avatar>
+                    </ng-template>
+                  </ion-col>
+
+                  <ion-col style="padding: 0px">
+                    <ion-row class="ion-justify-content-center" >
+                      <ion-col size-xs="12" size-lg="9" >
+                        <ion-row class="ion-text-center" >
+                          <ion-col size="12" style="padding: 0px">
+                            <ion-skeleton-text animated *ngIf="!userNickName; else nickNone"></ion-skeleton-text>
+                            <ng-template #nickNone>
+                              <p class="hero-text welcomeText">@{{ userNickName }}</p>
+                            </ng-template>
+                          </ion-col>
+                          <ion-col size="12" style="padding: 0px">
+                            <ion-chip class="chipPoints" style="margin: 0px">
+                              <ion-label style="width: 100%;text-align: start;display: flex;">
+                                <ion-icon name="radio-button-on-outline" style="margin-right: 5px;"></ion-icon>
+                                <p>Mis puntos: {{ userScore | number }}</p>
+                              </ion-label>
+                            </ion-chip>
+                          </ion-col>
+
+                          <ion-col size="12" style="padding: 0px; margin-top: 5px;">
+                            <ion-chip class="chipPoints" style="margin: 0px">
+                              <ion-label style="width: 100%;text-align: start;display: flex;">
+                                <ion-icon name="radio-button-on-outline" style="margin-right: 5px;"></ion-icon>
+                                <p>Por validar: {{ pending_store }}</p>
+                              </ion-label>
+                            </ion-chip>
+                          </ion-col>
+
+                        </ion-row>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="8" class="ion-text-center">
+            <ion-chip class="chipNotifications" routerLink="/customer/notifications">
+              <ion-label style="width: 83%;text-align: start;display: flex;">
+                <ion-icon name="notifications" ></ion-icon><p>Avisos</p>
+              </ion-label>
+              <h3>{{notifications}}</h3>
+            </ion-chip>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="ion-justify-content-center">
+
+          <ion-col size-xs="6" size-md="3">
+            <ion-card routerLink="/customer/upload" class="cards-home">
+              <ion-card-content style="padding: 6px;">
+                <ion-row>
+                  <ion-col class="colHomeCard">
+                    <ion-text>
+                      <p >Cargar tickets</p>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="3" style="text-align: end;">
+                    <ion-icon name="cloud-upload-outline" ></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <!-- Puntos extras -->
+          <ion-col size-xs="6" size-md="3">
+            <ion-card routerLink="/customer/share" class="cards-home">
+              <ion-card-content style="padding: 6px;">
+                <ion-row>
+                  <ion-col class="colHomeCard">
+                    <ion-text >
+                      <p>Puntos extra</p>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="4" style="text-align: end;">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col size-xs="6" size-md="3">
+            <ion-card routerLink="/customer/tickets" class="cards-home">
+              <ion-card-content style="padding: 6px;">
+                <ion-row>
+                  <ion-col class="colHomeCard">
+                    <ion-text>
+                      <p>Mis tickets</p>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="4" style="text-align: end;">
+                    <ion-icon name="newspaper-outline" ></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <!-- mis amigos -->
+          <ion-col size-xs="6" size-md="3">
+            <ion-card routerLink="/customer/friends"  class="cards-home">
+              <ion-card-content style="padding: 6px;">
+                <ion-row>
+                  <ion-col class="colHomeCard">
+                    <h1>{{ userRefer }}</h1>
+                    <p >Mis amigos</p>
+                  </ion-col>
+                  <ion-col size="4" style="text-align: end;">
+                    <ion-icon name="people-outline" ></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+            <!-- <ion-badge id="notifications-badge" color="danger">{{ userRefer }}</ion-badge> -->
+          </ion-col>
+
+          <ion-col size-xs="6" size-md="3">
+            <ion-card routerLink="/customer/positions"  class="cards-home">
+              <ion-card-content style="padding: 6px;">
+                <ion-row>
+                  <ion-col class="colHomeCard">
+                    <p>Posiciones</p>
+                  </ion-col>
+                  <ion-col size="4" style="text-align: end;">
+                    <ion-icon name="podium-outline"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+
+          <ion-col size-xs="6" size-md="3">
+            <ion-card routerLink="/customer/winners"  class="cards-home">
+              <ion-card-content style="padding: 6px;">
+                <ion-row>
+                  <ion-col class="colHomeCard">
+                    <p >Lista de ganadores</p>
+                  </ion-col>
+                  <ion-col size="4" style="text-align: end;">
+                    <ion-icon name="ribbon-outline"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col size-xs="6" size-md="3">
+            <ion-card routerLink="/customer/awards"  class="cards-home">
+              <ion-card-content style="padding: 6px;">
+                <ion-row>
+                  <ion-col class="colHomeCard">
+                    <p>Premios</p>
+                  </ion-col>
+                  <ion-col size="4" style="text-align: end;">
+                    <ion-icon name="trophy-outline"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col size-xs="6" size-md="3">
+            <ion-card routerLink="/customer/help"  class="cards-home">
+              <ion-card-content style="padding: 6px;">
+                <ion-row>
+                  <ion-col class="colHomeCard">
+                    <p >¿Tienes dudas?</p>
+                  </ion-col>
+                  <ion-col size="4" style="text-align: end;">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+
+          <ion-chip class="chipLogout" (click)="logout()">
+            <ion-label style="width: 100%;text-align: start;display: flex;"> <p>cerrar sesión</p> <ion-icon name="exit-outline" style="margin-left: 5px;"></ion-icon></ion-label>
+          </ion-chip>
+
+        </ion-row>
+
+
+      </ion-col>
+    </ion-row>
+
+    <ion-slides [options]="option" class="ion-margin-top" >
+
+      <ng-container >
+        <ion-slide *ngFor="let promo of promos" >
+          <ion-card (click)="openPromo(promo.id)">
+            <img src="http://api.guiasde.com/tienda/storage/app/public/img/promos/{{promo.banner_img}}">
+          </ion-card>
+        </ion-slide>
+      </ng-container>
+
+    </ion-slides>
+
+  </ion-grid>
+
+</ion-content>

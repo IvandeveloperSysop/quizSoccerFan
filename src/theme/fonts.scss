@@ -1,0 +1,26 @@
+@font-face {
+  font-family: 'tccc-unitycondensedbold';
+  src: url('../assets/fonts/tccc-unitycondensed-bold2-webfont.woff2') format('woff2'),
+       url('../assets/fonts/tccc-unitycondensed-bold2-webfont.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'tccc-unitycondensedmedium';
+  src: url('../assets/fonts/tccc-unitycondensed-medium2-webfont.woff2') format('woff2'),
+       url('../assets/fonts/tccc-unitycondensed-medium2-webfont.woff') format('woff');
+  font-weight: medium;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham Rounded';
+  src: url('../assets/fonts/GothamRounded-Bold.woff2') format('woff2'),
+      url('../assets/fonts/GothamRounded-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+

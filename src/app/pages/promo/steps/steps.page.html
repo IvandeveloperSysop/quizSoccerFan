@@ -1,0 +1,73 @@
+
+<ion-content >
+
+  <ion-header >
+    <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title >Instrucciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeLg="8" class="ion-align-self-center">
+        <ion-row>
+          <ion-col>
+            <ion-text class="ion-text-center" >
+              <h4>"Pasos para ganar mini carrera"</h4>
+              <!-- <p>CON AGUA CIEL, AGUA CIEL EXPRIM, TOPO CHICO AGUA MINERAL, TOPO CHICO SANGRIA, TOPO CHICO TWIST, TOPO CHICO HARD SELTER</p> -->
+
+            </ion-text>
+          </ion-col>
+        </ion-row>
+
+        <ion-segment [value]="instructions" [(ngModel)]="instructions" >
+          <ion-segment-button value="ticket">
+            <ion-label >Pasos</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="productos">
+            <ion-label >Productos</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+
+
+        <ion-row *ngIf="instructions == 'ticket'; else productos" style="justify-content: center;">
+          <ion-col size-lg="10" size-md="12">
+
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12">
+
+                <!-- <ol style="text-align: justify;">
+                  <li style="margin-bottom: 10px;">Ingresa a <a href="www.destaparecompensas.com">www.destaparecompensas.com</a> y presiona cualquiera de los banners de las mini carreras activas </li>
+                  <li style="margin-bottom: 10px;">Compra cualquier producto de la familia Coca-Cola en tiendas Kiosko.</li>
+                  <li style="margin-bottom: 10px;">Registra tus tickets y genera puntos por cada presentación paticipante en el ticket</li>
+                  <li style="margin-bottom: 10px;">Revisa los primeros 20 lugares en la lista de posiciones.</li>
+                  <li style="margin-bottom: 10px;">Una vez finalizada la promoción revisa los ganadores en la lista de posiciones.</li>
+                </ol> -->
+
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+        <ng-template #productos >
+          <div class="table-responsive">
+            <table>
+              <tr>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+              </tr>
+              <tr *ngFor="let product of products; let i = index">
+                <td>{{ product.name }}</td>
+                <td>{{ product.points }}</td>
+              </tr>
+            </table>
+          </div>
+        </ng-template>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

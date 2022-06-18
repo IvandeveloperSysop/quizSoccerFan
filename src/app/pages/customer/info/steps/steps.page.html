@@ -1,0 +1,111 @@
+
+<ion-content >
+
+  <ion-header >
+    <ion-toolbar color="secondary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+      </ion-buttons>
+      <ion-title >Instrucciones</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeLg="8" class="ion-align-self-center">
+        <ion-row>
+          <ion-col>
+            <ion-text class="ion-text-center" >
+              <h4>"Pasos para participar"</h4>
+
+            </ion-text>
+          </ion-col>
+        </ion-row>
+
+        <ion-segment [value]="instructions" [(ngModel)]="instructions" >
+          <ion-segment-button value="ticket">
+            <ion-label >Pasos</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="productos">
+            <ion-label >Productos</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+
+        <ion-row *ngIf="instructions == 'ticket'; else productos" style="justify-content: center;">
+          <ion-col size-lg="10" size-md="12">
+            <ion-row>
+              <ion-col>
+                <div *ngIf="!videoPath">
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                </div>
+                <div *ngIf="videoPath">
+                  <iframe [src]="videoPath" width="100%" id="iframeVideo" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen></iframe>
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12">
+                <h2>GANA CON CIEL MINERALIZADA</h2>
+
+                <h3>Participa para ganar ¡grandes incentivos!</h3>
+                
+                <h4>COMPRA</h4>
+
+                <p>La productos Ciel Mineralizada y Ciel Purificada en las presentaciones participantes en tiendas Kiosko de la República Mexicana.</p>
+
+                <h4>REGISTRA Y GENERA PUNTOS</h4>
+
+                <p>Registra tus tickets en www.ganaconcielmineralizada.com para generar puntos, por cada peso invertido te generará 1 punto, los cuales podrás canjear por incentivos en nuestra tienda virtual.</p>
+
+                <h4>GENERA PUNTOS EXTRAS</h4>
+                <ul>
+                  <li>Invita a tus amigos a participar, cuando ese contacto registre su primer ticket de al menos $50 pesos, obtendrás 10 puntos en automático.</li>
+                  <li>Comparte la promoción en tus redes sociales, con lo cual obtendrás 20 puntos.</li>
+                </ul> 
+
+                <h4>GANA</h4>
+
+                <ul>
+                  <li>2,000 Tarjetas Virtuales con valor de $100 pesos.</li>
+                  <li>20 Alexas Echo Dot</li>
+                  <li>20 Alexas Echo Show</li>
+                  <li>20 Cámaras de Seguridad Xioami</li>
+                </ul>
+
+                <h4>VIGENCIA DE LA PROMOCIÓN</h4>
+
+                <p>Del 20 de junio al 15 de agosto 2022.</p>
+
+                <p><b>Territorios y Cadenas participantes:</b> Toda la República Mexicana donde haya tiendas Kiosko.</p>
+
+                <p><b>Productos participantes:</b> Ciel Mineralizada 600ml y 2L. Ciel Purificada 600ml. Ciel Twist 600ml y 1.5L</p>
+
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+        <ng-template #productos >
+          <div class="table-responsive">
+            <table>
+              <tr>
+                <th>CATEGORIA</th>
+                <th>MARCA</th>
+                <th>PRODUCTO</th>
+                <th>TAMAÑO</th>
+              </tr>
+              <tr *ngFor="let product of products; let i = index">
+                <td>{{ product.name }}</td>
+                <td>{{ product.marca }}</td>
+                <td>{{ product.producto }}</td>
+                <td>{{ product.cantidad }}</td>
+              </tr>
+            </table>
+          </div>
+        </ng-template>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
